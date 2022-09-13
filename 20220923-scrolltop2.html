@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+		  rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		  rel="stylesheet">
+
+	<title>Title</title>
+
+	<style>
+
+		*{position:relative; 
+			padding:	0; 
+			margin:	0;
+			font-family:	"Work Sans", sans-serif;
+		}
+		
+		li, ul, ol{
+			list-style:none;
+		}
+
+		.section{
+			width:	100%; 
+			height:	100vh;
+			font-size:	10vw;
+			text-transform:	uppercase;
+			font-weight:900;
+			display:	flex;
+			align-items:	center;
+			justify-content:	center;
+			color:	white;
+		}
+
+		.section1{
+			background-color:#13C7A3
+		}
+
+		.section2{
+			background-color:#FFBE0A
+		}
+		.section3{
+			background-color:#6E6EFF
+		}
+		.section4{
+			background-color:#FFAAAF
+		}
+		.section5{
+			background-color:#00A5FF
+		}
+		.section6{
+			background-color:#8c8c8c
+		}
+		.arrow{
+			position:	fixed;
+			width:	0px; 
+			height:	100vh;
+			top:	0;
+			left:	50%;
+			z-index:	10;
+		}
+
+		.arrow .btn{	
+			width:	300px;	
+			height:	100px;
+			
+			position:	absolute;
+			transform:	translate(-50%, 0);
+		}
+		.arrow .btn-prev{
+			top:0;
+		}
+
+		.arrow .btn-next{
+			bottom:0;
+		}
+
+		.indi-group{
+			position:fixed;
+			left:20px;
+			top:100px;
+			z-index:	10;
+			color:white;
+		}
+
+		.indi .text{
+			
+		}
+
+		.indi .text1{
+			font-weight:100;
+			font-size:20px;
+			top:-24px;
+		}
+		
+		.indi .text2{
+			font-weight:500; 
+			text-transform:uppercase;
+			font-size:25px;line-height:50px;
+		}
+
+		.indi .text3{
+			font-size:14px; 
+			font-weight:200;
+			line-height:18px;
+			width:300px;
+		}
+
+		.indi-group{
+			border-left:2px solid white;
+			height:100vh
+		}
+		
+		.indi{
+			padding-left:20px;
+			height:30px;
+			overflow:hidden;
+			top:-10px;
+			padding-top:20px;
+		}
+
+		.indi::before{
+			content:"";
+			display:block;
+			width:20px;
+			height:2px;
+			background-color:white;position:absolute;
+			top:10px;
+			left:0;
+		}
+
+		.indi.active{
+			height:200px;
+		}
+		.indi.active .text1{
+			font-size:30px;
+		}
+	</style>
+</head>
+
+<body>
+<div class="indi-group">
+	<div class="indi active">
+		<div class="text text1">01</div>
+		<div class="text text2">Title</div>
+		<div class="text text3">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet
+			condimentum lacus.
+		</div>
+	</div>
+
+	<div class="indi">
+		<div class="text text1">02</div>
+		<div class="text text2">Title2</div>
+		<div class="text text3">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet
+			condimentum lacus.
+		</div>
+	</div>
+
+	<div class="indi">
+		<div class="text text1">03</div>
+		<div class="text text2">Title3</div>
+		<div class="text text3">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet
+			condimentum lacus.
+		</div>
+	</div>
+
+	<div class="indi">
+		<div class="text text1">04</div>
+		<div class="text text2">Title4</div>
+		<div class="text text3">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet
+			condimentum lacus.
+		</div>
+	</div>
+
+	<div class="indi">
+		<div class="text text1">05</div>
+		<div class="text text2">Title5</div>
+		<div class="text text3">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet
+			condimentum lacus.
+		</div>
+	</div>
+
+	<div class="indi">
+		<div class="text text1">06</div>
+		<div class="text text2">Title6</div>
+		<div class="text text3">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet
+			condimentum lacus.
+		</div>
+	</div>
+</div>
+
+<div class="section-group">
+	<section class="section section1">section1</section>
+	<section class="section section2">section2</section>
+	<section class="section section3">section3</section>
+	<section class="section section4">section4</section>
+	<section class="section section5">section5</section>
+	<section class="section section6">section6</section>
+</div>
+
+<div class="arrow">
+	<div class="btn btn-prev">이전버튼</div>
+	<div class="btn btn-next">다음버튼</div>
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    i = 0
+    page()
+
+	function page(){
+        win_h = $(window).height();
+        $("html,body").stop().animate({scrollTop: win_h * i})
+        $(".indi").eq(i).addClass("active")
+        $(".indi").not($(".indi").eq(i)).removeClass("active")
+		if(i==5){
+            $(".btn-next").hide()
+            $(".btn-prev").show()
+		}else if(i==0){
+            $(".btn-prev").hide()
+            $(".btn-next").show()
+		}else{
+            $(".btn-prev").show()
+            $(".btn-next").show()
+		}
+	}
+
+    $(".indi").click(function () {
+        i = $(this).index();
+        page()
+    })
+
+    $(".btn-next").click(function () {
+		i++
+        page()
+    })
+    $(".btn-prev").click(function () {
+        i--
+        page()
+    })
+
+
+    $("html").on("mousewheel", function(event){
+        delta=event.originalEvent.wheelDelta
+        console.log(delta)
+        if(delta<0 && i<5){
+            i++
+            page()
+        }else if(delta>0 && i>0){
+            i--
+            page()
+        }
+    })
+
+
+</script>
+</html>
